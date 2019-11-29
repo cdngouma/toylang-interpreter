@@ -9,18 +9,30 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.regex.Pattern;
 
+/**
+ * Responsible of producing a Parse Tree for a given CFS.
+ */
 public class Parser {
     private int cursor;
     private List<String> tokens;
     private Set<String> initializedVars;
+    // Needed to construct the AST using Shunting-yard algorithm
     private Stack<String> operatorStack;
     private Stack<ASTNode> exprStack;
+    // Used to show exactly when a error is detected on the prgram.
     private StringBuilder programStr;
 
     private final String IDENTIFIER = "([a-zA-Z_][a-zA-Z_0-9]*)";
-    private final String NUMBERS = "((-)?(0|[1-9][0-9]*))";
+    private final String NUMBERS = "(0|-?[1-9][0-9]*)";
     private final String OPERATORS = "([*+-=])";
 
+    /**
+     * Produce a Parse Tree given a list of tokens.
+     * @param tokens A list of tokens.
+     * @return A Parse Tree.
+     * @throws UnexpectedTokenException When the sequence of tokens does not match the CFS.
+     * @throws UninitializedVariableException When an uninitialized variable is detected.
+     */
     public ParseTree parse(List<String> tokens) throws UnexpectedTokenException, UninitializedVariableException {
         this.initializedVars = new HashSet<>();
         this.operatorStack = new Stack<>();
@@ -49,16 +61,18 @@ public class Parser {
         return parseTree;
     }
 
-    // A -> I = E;
+    /**
+     * Verify if the sequence of token matches the CFS: Assignment :: Identifier = Expression
+     * @return A Syntax Tree Node.
+     */
     private ASTNode assignment() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
+        // A -> I = E
         String id = identifier();
         if (id != null) {
-            updateStacks(id);
             programStr.append(this.tokens.get(cursor)).append(" ");
             this.cursor++;
-            // match assignment operator '='
+            // check for assignment operator '='
             if (this.tokens.get(cursor).compareTo("=") == 0) {
-                updateStacks("=");
                 programStr.append(this.tokens.get(cursor)).append(" ");
                 this.cursor++;
                 if (expression()) {
@@ -66,8 +80,9 @@ public class Parser {
                     if (this.tokens.get(cursor).compareTo(";") == 0) {
                         emptyStacks();
                         initializedVars.add(id);
-                        ASTNode A = exprStack.pop();
-                        System.err.println("expr: " + exprStack.size() + " op: " + operatorStack.size());
+                        ASTNode E = exprStack.pop();
+                        ASTNode I = new ASTNode(id);
+                        ASTNode A = new ASTNode("=",I,E);
                         programStr.append(this.tokens.get(cursor)).append("\n");
                         this.cursor++;
                         return A;
@@ -86,6 +101,10 @@ public class Parser {
         }
     }
 
+    /**
+     * Verify if the given token is an Identifier.
+     * @return A string representation of a variable name or null (if not an Identifier).
+     */
     private String identifier() throws IndexOutOfBoundsException {
         if (Pattern.matches(IDENTIFIER, this.tokens.get(cursor))) {
             return this.tokens.get(cursor);
@@ -93,9 +112,12 @@ public class Parser {
         return null;
     }
 
-    // E -> E + T | E - T | E
-    // E -> TE'
+    /**
+     * Verify if the sequence of token matches the CFS: Expression :: TermExpression_Prime.
+     * @return True if the CFS is matched at the current level; False otherwise.
+     */
     private boolean expression() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
+        // E -> TE'
         if (term()) {
             return expressionPrime();
         } else {
@@ -103,8 +125,12 @@ public class Parser {
         }
     }
 
-    // E' -> +TE' | -TE' | e
+    /**
+     * Verify if the sequence of token matches the CFS: ExpressionPrime :: +TermExpression_Prime | -TermExpression_Prime | null
+     * @return True if the CFS is matched at the current level; False otherwise.
+     */
     private boolean expressionPrime() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
+        // E' -> +TE' | -TE' | e
         if (Pattern.matches("^[+-]$", this.tokens.get(cursor))) {
             // add + or - to tree
             String op = this.tokens.get(cursor);
@@ -121,9 +147,12 @@ public class Parser {
         return true;
     }
 
-    // T -> T * F | F
-    // T -> FT'
+    /**
+     * Verify if the sequence of token matches the CFS: Term :: FactorTerm_Prime
+     * @return True if the CFS is matched at the current level; False otherwise.
+     */
     private boolean term() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
+        // T -> FT'
         if (factor()) {
             return termPrime();
         } else {
@@ -131,8 +160,13 @@ public class Parser {
         }
     }
 
-    // T' -> *FT' | e
+    /**
+     * Verify if the sequence of token matches the CFS: Term_Prime :: *FactorTerm_Prime
+     * @return True if the CFS is matched at the current level; False otherwise.
+     * @throws UnexpectedTokenException When the CFS is not matched at the current level.
+     */
     private boolean termPrime() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
+        // T' -> *FT'
         if (this.tokens.get(cursor).compareTo("*") == 0) {
             // add * to tree
             String op = this.tokens.get(cursor);
@@ -149,6 +183,12 @@ public class Parser {
     }
 
     // F -> ( E ) | -F | +F | L | I
+
+    /**
+     * Verify if the sequence of token matches the CFS: Factor :: (Expression) | -Factor | +Factor | Literal | Identifier
+     * @return True if the CFS is matched at the current level; False otherwise.
+     * @throws UninitializedVariableException When an uninitialized variable is detected.
+     */
     private boolean factor() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
         if (this.tokens.get(cursor).compareTo("(") == 0) {
             updateStacks("(");
@@ -203,19 +243,19 @@ public class Parser {
             ASTNode n1 = exprStack.isEmpty() ? null : exprStack.pop();
             exprStack.push(new ASTNode(operator, n1, n2));
         }
-        // Pop the '(' off the operator stack.
-        //operatorStack.pop();
     }
 
-    private void updateStacks(String o) {
-        if (Pattern.matches("^" + NUMBERS + "|" + IDENTIFIER + "$", o)) {
-            exprStack.add(new ASTNode(o));
+    // Uses Shunting-yard algorithm to construct a Abstract Syntax Tree
+    // https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+    private void updateStacks(String token) {
+        if (Pattern.matches("^" + NUMBERS + "|" + IDENTIFIER + "$", token)) {
+            exprStack.add(new ASTNode(token));
         }
-        else if (o.compareTo("(") == 0) {
-            operatorStack.push(o);
+        else if (token.compareTo("(") == 0) {
+            operatorStack.push(token);
         }
-        else if (Pattern.matches(OPERATORS, o)) {
-            while (!operatorStack.isEmpty() && opPrecedence(operatorStack.peek()) >= opPrecedence(o)) {
+        else if (Pattern.matches(OPERATORS, token)) {
+            while (!operatorStack.isEmpty() && opPrecedence(operatorStack.peek()) >= opPrecedence(token)) {
                 String operator = operatorStack.pop();
                 // The second operand was pushed last
                 ASTNode n2 = exprStack.isEmpty() ? null : exprStack.pop();
@@ -223,9 +263,9 @@ public class Parser {
                 exprStack.push(new ASTNode(operator, n1, n2));
             }
             // push operator onto stack
-            operatorStack.push(o);
+            operatorStack.push(token);
         }
-        else if (o.compareTo(")") == 0) {
+        else if (token.compareTo(")") == 0) {
             while (!operatorStack.isEmpty() && operatorStack.peek().compareTo("(") != 0) {
                 String operator = operatorStack.pop();
                 // The second operand was pushed last.
@@ -238,18 +278,21 @@ public class Parser {
         }
     }
 
-    private int opPrecedence(String op) {
+    /**
+     * Determine an operator precedence
+     * @param op An operator.
+     * @return The operator precedence value.
+     */
+    private int opPrecedence(String op) throws IllegalArgumentException {
         switch (op) {
-            case "=":
+            case "(": case ")":
                 return 0;
             case "+": case "-":
                 return 1;
             case "*":
                 return 2;
-            case "(": case ")":
-                return 3;
             default:
-                throw new IllegalArgumentException(String.format("Operator unknown: %s:\n%s<< HERE >>", op, programStr.toString()));
+                throw new IllegalArgumentException(String.format("Operator unknown: %s", op));
         }
     }
 }
