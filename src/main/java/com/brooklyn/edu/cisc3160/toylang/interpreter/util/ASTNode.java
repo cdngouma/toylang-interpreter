@@ -3,7 +3,7 @@ package com.brooklyn.edu.cisc3160.toylang.interpreter.util;
 /**
  * A Node of an Abstract Syntax Tree.
  */
-class ASTNode {
+public class ASTNode {
     private String value;
     private ASTNode left;
     private ASTNode right;
