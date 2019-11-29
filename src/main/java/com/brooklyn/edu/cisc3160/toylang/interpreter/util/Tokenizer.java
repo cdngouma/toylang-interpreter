@@ -1,13 +1,13 @@
-package com.brooklyn.edu.cisc3160.toylang.interpreter;
+package com.brooklyn.edu.cisc3160.toylang.interpreter.util;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
-public class SyntaxScanner {
+public class Tokenizer {
     private final static String ALLOWED_SYMBOLS = "[+\\-*=\\\\/;,&><{}|()^%!\"'`:.?~]";
 
-    public static List<String> scan(String input) {
+    public static List<String> tokenize(String input) {
         List<String> tokens = new ArrayList<>();
         int i = 0;
         while (i < input.length()) {
