@@ -1,4 +1,4 @@
-package com.brooklyn.edu.cisc3160.toylang.interpreter.util;
+package com.brooklyn.edu.cisc3160.toylang.interpreter;
 
 import java.util.ArrayList;
 import java.util.List;

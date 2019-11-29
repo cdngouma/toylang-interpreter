@@ -4,8 +4,6 @@ import com.brooklyn.edu.cisc3160.toylang.interpreter.exception.UnexpectedTokenEx
 import com.brooklyn.edu.cisc3160.toylang.interpreter.exception.UninitializedVariableException;
 import com.brooklyn.edu.cisc3160.toylang.interpreter.util.ASTNode;
 import com.brooklyn.edu.cisc3160.toylang.interpreter.util.ParseTree;
-import com.brooklyn.edu.cisc3160.toylang.interpreter.util.Parser;
-import com.brooklyn.edu.cisc3160.toylang.interpreter.util.Tokenizer;
 
 import java.util.HashMap;
 import java.util.List;

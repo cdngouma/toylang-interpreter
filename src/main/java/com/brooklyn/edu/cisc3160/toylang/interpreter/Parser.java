@@ -1,7 +1,9 @@
-package com.brooklyn.edu.cisc3160.toylang.interpreter.util;
+package com.brooklyn.edu.cisc3160.toylang.interpreter;
 
 import com.brooklyn.edu.cisc3160.toylang.interpreter.exception.UnexpectedTokenException;
 import com.brooklyn.edu.cisc3160.toylang.interpreter.exception.UninitializedVariableException;
+import com.brooklyn.edu.cisc3160.toylang.interpreter.util.ASTNode;
+import com.brooklyn.edu.cisc3160.toylang.interpreter.util.ParseTree;
 
 import java.util.HashSet;
 import java.util.List;
