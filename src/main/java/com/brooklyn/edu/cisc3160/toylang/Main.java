@@ -12,7 +12,7 @@ public class Main {
                 "x = 2 * 3;",
                 "x = -5;",
                 "x = 3 - 8;",
-                "x = 3;\ny = 5;\nz = x * 3 - y",
+                "x = 3;\ny = 5;\nz = x * 3 - y;",
                 "x = 3 * (5 - 5) + 2;",
                 "l = 4;\nw = 4;\nA = (l * w);",
                 "price = 5;\nqty = 12;\nbill = price * qty;",
@@ -22,11 +22,12 @@ public class Main {
                 "x = 7",
                 "x = 003",
                 "3x = 3;",
-                "r = 5;",
+                "r = 5",
                 "A = s * s;",
                 "8 = 5;",
                 "if == 98;"
         };
+        //String [] programs = {"x = -5;"};
 
         int len = programs.length;
 

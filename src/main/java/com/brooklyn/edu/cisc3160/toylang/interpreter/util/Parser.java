@@ -18,7 +18,7 @@ public class Parser {
     private StringBuilder programStr;
 
     private final String IDENTIFIER = "([a-zA-Z_][a-zA-Z_0-9]*)";
-    private final String NUMBERS = "(0|[1-9][0-9]*)";
+    private final String NUMBERS = "((-)?(0|[1-9][0-9]*))";
     private final String OPERATORS = "([*+-=])";
 
     public ParseTree parse(List<String> tokens) throws UnexpectedTokenException, UninitializedVariableException {
@@ -234,7 +234,7 @@ public class Parser {
                 exprStack.push(new ASTNode(operator, n1, n2));
             }
             // Pop the '(' off the operator stack.
-            operatorStack.pop();
+            if (!operatorStack.isEmpty()) operatorStack.pop();
         }
     }
 

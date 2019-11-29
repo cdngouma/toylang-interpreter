@@ -2,16 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbbf311-0b46-4274-935b-c0281fbb8bf4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Parser.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/SyntaxScanner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/tokens/ExprNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/tokens/IdentifierNode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/tokens/SyntaxTree.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/tokens/Token.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,20 +16,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+            <state relative-caret-position="221">
+              <caret line="18" column="40" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -44,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3315">
-              <caret line="202" column="70" selection-start-line="202" selection-start-column="70" selection-end-line="202" selection-end-column="70" />
+            <state relative-caret-position="1543">
+              <caret line="224" column="34" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -65,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="595">
-              <caret line="37" selection-start-line="37" selection-end-line="37" />
+            <state relative-caret-position="143">
+              <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -134,10 +118,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/exception/UninitializedVariableException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/exception/IllegalExpressionException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" />
       </list>
     </option>
   </component>
@@ -204,7 +188,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1574902314330" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575056003109" />
     <property name="last_opened_file_path" value="$PATH_TO_FX$/javafx.web.jar!/" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -263,6 +247,15 @@
     </task>
     <servers />
   </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
@@ -276,14 +269,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3297587" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3297587" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.3297587" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297587" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3297587" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -363,10 +356,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="884">
+          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3315">
-          <caret line="202" column="70" selection-start-line="202" selection-start-column="70" selection-end-line="202" selection-end-column="70" />
+        <state relative-caret-position="1543">
+          <caret line="224" column="34" selection-start-line="224" selection-start-column="34" selection-end-line="224" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -383,34 +390,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="37" selection-start-line="37" selection-end-line="37" />
+        <state relative-caret-position="143">
+          <caret line="61" column="12" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="24" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
         </state>
       </provider>
     </entry>
