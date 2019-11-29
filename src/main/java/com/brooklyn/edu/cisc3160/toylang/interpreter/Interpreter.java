@@ -15,26 +15,19 @@ import java.util.regex.Pattern;
 public class Interpreter {
 
     public static void run(String program) {
-        Parser parser = new Parser();
-        List<String> tokens = Tokenizer.tokenize(program);
-        System.out.println(tokens);
-
-        ParseTree parseTree = null;
         try {
-            parseTree = parser.parse(tokens);
-            for (ASTNode node : parseTree.getChildren()) {
-                printTree(node);
-                System.out.println();
-            }
-
-        /*    Map<String,Integer> varsTable = buildVarsTable(parseTree);
-
-            System.out.println("VARS TABLE:");
-            for (String var : varsTable.keySet()) {
-                System.out.println(String.format("%s = %d", var, varsTable.get(var)));
-            }*/
+            Parser parser = new Parser();
+            List<String> tokens = Tokenizer.tokenize(program);
+            printVarsValues(parser.parse(tokens));
         } catch (UnexpectedTokenException | UninitializedVariableException e) {
             System.err.println(e.getMessage());
+        }
+    }
+
+    private static void printVarsValues(ParseTree tree) throws UninitializedVariableException {
+        Map<String,Integer> varsTable = buildVarsTable(tree);
+        for (String var : varsTable.keySet()) {
+            System.out.println(String.format("%s = %d", var, varsTable.get(var)));
         }
     }
 
@@ -64,16 +57,9 @@ public class Interpreter {
             case "*":
                 return leftVal * rightVal;
             default:
-                if (Pattern.matches("^(0|[1-9][0-9]*)$", value)) return Integer.parseInt(value);
+                if (Pattern.matches("^(0|-?[1-9][0-9]*)$", value)) return Integer.parseInt(value);
                 else if (Pattern.matches("^([a-zA-Z_][a-zA-Z_0-9]*)$", value)) return varsTable.get(value);
                 throw new UninitializedVariableException(String.format("Error: '%s' may have not been initialized", value));
         }
-    }
-
-    private static void printTree(ASTNode node) {
-        if (node == null) return;
-        printTree(node.getLeft());
-        System.out.print(node.getValue() + " ");
-        printTree(node.getRight());
     }
 }
