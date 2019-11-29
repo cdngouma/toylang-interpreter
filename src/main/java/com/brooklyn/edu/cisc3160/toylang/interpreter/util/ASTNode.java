@@ -1,6 +1,9 @@
 package com.brooklyn.edu.cisc3160.toylang.interpreter.util;
 
-public class ASTNode {
+/**
+ * A Node of an Abstract Syntax Tree.
+ */
+class ASTNode {
     private String value;
     private ASTNode left;
     private ASTNode right;
@@ -19,23 +22,11 @@ public class ASTNode {
         return value;
     }
 
-    public void setValue(String value) {
-        this.value = value;
-    }
-
     public ASTNode getLeft() {
         return left;
     }
 
-    public void setLeft(ASTNode left) {
-        this.left = left;
-    }
-
     public ASTNode getRight() {
         return right;
-    }
-
-    public void setRight(ASTNode right) {
-        this.right = right;
     }
 }

@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbbf311-0b46-4274-935b-c0281fbb8bf4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -27,8 +26,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="167" column="41" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
+            <state relative-caret-position="1292">
+              <caret line="167" column="16" lean-forward="true" selection-start-line="167" selection-start-column="16" selection-end-line="167" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -49,22 +48,20 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="194">
-              <caret line="27" column="43" lean-forward="true" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="221">
-              <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
+              <folding>
+                <element signature="e#209#210#0" expanded="true" />
+                <element signature="e#243#244#0" expanded="true" />
+                <element signature="e#428#429#0" expanded="true" />
+                <element signature="e#456#457#0" expanded="true" />
+                <element signature="e#488#489#0" expanded="true" />
+                <element signature="e#515#516#0" expanded="true" />
+                <element signature="e#548#549#0" expanded="true" />
+                <element signature="e#576#577#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -116,11 +113,11 @@
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ParseTree.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/exception/UninitializedVariableException.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/exception/IllegalExpressionException.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java" />
       </list>
     </option>
   </component>
@@ -187,7 +184,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575057047210" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1575057254069" />
     <property name="last_opened_file_path" value="$PATH_TO_FX$/javafx.web.jar!/" />
     <property name="project.structure.last.edited" value="Global Libraries" />
     <property name="project.structure.proportion" value="0.15" />
@@ -259,7 +256,7 @@
     <frame x="-7" y="-7" width="1550" height="878" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21744967" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21744967" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -273,7 +270,7 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3297587" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3297587" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3297587" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3297587" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.3297587" />
@@ -355,17 +352,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/Interpreter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="884">
           <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/regex/Pattern.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1171" column="26" selection-start-line="1171" selection-start-column="26" selection-end-line="1171" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="33" column="38" lean-forward="true" selection-start-line="33" selection-start-column="38" selection-end-line="33" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -379,36 +393,29 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="18" column="40" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="167" column="41" selection-start-line="167" selection-start-column="41" selection-end-line="167" selection-end-column="41" />
+        <state relative-caret-position="1292">
+          <caret line="167" column="16" lean-forward="true" selection-start-line="167" selection-start-column="16" selection-end-line="167" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-11.0.2/lib/src.zip!/java.base/java/util/regex/Pattern.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/ASTNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1171" column="26" selection-start-line="1171" selection-start-column="26" selection-end-line="1171" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/brooklyn/edu/cisc3160/toylang/interpreter/util/Tokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="194">
-          <caret line="27" column="43" lean-forward="true" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        <state relative-caret-position="221">
+          <caret line="14" column="20" lean-forward="true" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="20" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#209#210#0" expanded="true" />
+            <element signature="e#243#244#0" expanded="true" />
+            <element signature="e#428#429#0" expanded="true" />
+            <element signature="e#456#457#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#515#516#0" expanded="true" />
+            <element signature="e#548#549#0" expanded="true" />
+            <element signature="e#576#577#0" expanded="true" />
           </folding>
         </state>
       </provider>
