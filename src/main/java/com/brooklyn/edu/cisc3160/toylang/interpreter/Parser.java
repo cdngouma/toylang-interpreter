@@ -52,7 +52,13 @@ public class Parser {
         }
     }
 
-    // P -> A*
+    /**
+     * Verifies if the sequence of token matches the language CFG: Program :: Assignment*.
+     * @return The Parse Tree for the given program.
+     * @throws IndexOutOfBoundsException When a closing semi-colon ';' is missing.
+     * @throws UnexpectedTokenException When the sequence of tokens does not match the language CFG.
+     * @throws UninitializedVariableException When an uninitialized variable has been detected.
+     */
     private ParseTree program() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
         ParseTree parseTree = new ParseTree();
         while (this.cursor < this.tokens.size()) {
@@ -64,7 +70,7 @@ public class Parser {
     }
 
     /**
-     * Verify if the sequence of token matches the CFS: Assignment :: Identifier = Expression
+     * Verifies if the sequence of token matches the CFS: Assignment :: Identifier = Expression
      * @return A Syntax Tree Node.
      */
     private ASTNode assignment() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
@@ -115,7 +121,7 @@ public class Parser {
     }
 
     /**
-     * Verify if the sequence of token matches the CFS: Expression :: TermExpression_Prime.
+     * Verifies if the sequence of token matches the CFS: Expression :: TermExpression_Prime.
      * @return True if the CFS is matched at the current level; False otherwise.
      */
     private boolean expression() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
@@ -128,7 +134,7 @@ public class Parser {
     }
 
     /**
-     * Verify if the sequence of token matches the CFS: ExpressionPrime :: +TermExpression_Prime | -TermExpression_Prime | null
+     * Verifies if the sequence of token matches the CFS: ExpressionPrime :: +TermExpression_Prime | -TermExpression_Prime | null
      * @return True if the CFS is matched at the current level; False otherwise.
      */
     private boolean expressionPrime() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
@@ -150,7 +156,7 @@ public class Parser {
     }
 
     /**
-     * Verify if the sequence of token matches the CFS: Term :: FactorTerm_Prime
+     * Verifies if the sequence of token matches the CFS: Term :: FactorTerm_Prime
      * @return True if the CFS is matched at the current level; False otherwise.
      */
     private boolean term() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
@@ -163,7 +169,7 @@ public class Parser {
     }
 
     /**
-     * Verify if the sequence of token matches the CFS: Term_Prime :: *FactorTerm_Prime
+     * Verifies if the sequence of token matches the CFS: Term_Prime :: *FactorTerm_Prime
      * @return True if the CFS is matched at the current level; False otherwise.
      * @throws UnexpectedTokenException When the CFS is not matched at the current level.
      */
@@ -184,14 +190,13 @@ public class Parser {
         return true;
     }
 
-    // F -> ( E ) | -F | +F | L | I
-
     /**
      * Verify if the sequence of token matches the CFS: Factor :: (Expression) | -Factor | +Factor | Literal | Identifier
      * @return True if the CFS is matched at the current level; False otherwise.
      * @throws UninitializedVariableException When an uninitialized variable is detected.
      */
     private boolean factor() throws IndexOutOfBoundsException, UnexpectedTokenException, UninitializedVariableException {
+        // F -> ( E ) | -F | +F | L | I
         if (this.tokens.get(cursor).compareTo("(") == 0) {
             updateStacks("(");
             programStr.append(this.tokens.get(cursor)).append(" ");
