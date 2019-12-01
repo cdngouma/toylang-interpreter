@@ -2,38 +2,52 @@ package com.brooklyn.edu.cisc3160.toylang;
 
 import com.brooklyn.edu.cisc3160.toylang.interpreter.Interpreter;
 
+import java.io.*;
+import java.util.Map;
+
 public class Main {
     public static void main(String[] args) {
-        String[] programs = {
-                //correct syntax
-                "x = 3;",
-                "x_2 = 10;",
-                "x = 2 + 3;",
-                "x = 2 * 3;",
-                "x = -5;",
-                "x = 3 - 8;",
-                "x = 3;\ny = 5;\nz = x * 3 - y;",
-                "x = 3 * (5 - 5) + 2;",
-                "l = 4;\nw = 4;\nA = (l * w);",
-                "price = 5;\nqty = 12;\nbill = price * qty;",
-                "x = 1;\ny = 2;\nz = ---(x*y)*(x+-y);",
-                // incorrect syntax
-                "x =;",
-                "x = 7",
-                "x = 003",
-                "3x = 3;",
-                "r = 5",
-                "A = s * s;",
-                "8 = 5;",
-                "if == 98;"
-        };
-        //String [] programs = {"x = -5;"};
+        try {
+            String program;
+            if (args.length < 2) {
+                System.out.println("Info: Not enough arguments entered.\nexecuting built-in default test program...");
+                // Default test program
+                program = "x=1;\ny = 2;\nz = ---(x*y)*(x+-y);";
+            } else {
+                if (args[0].compareTo("--vars") == 0) {
+                    // locate file
+                    String fileName = args[1];
+                    program = loadProgram(fileName);
+                } else {
+                    throw new Exception(String.format("Command unknown: '%s'", args[0]));
+                }
+            }
 
-        int len = programs.length;
+            Interpreter interpreter = new Interpreter();
+            Map<String,Integer> varsTable = interpreter.getVarsTable(program);
+            for (String var : varsTable.keySet()) {
+                System.out.println(String.format("%s = %d", var, varsTable.get(var)));
+            }
 
-        for (String program : programs) {
-            Interpreter.run(program);
-            System.out.println();
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
         }
+    }
+
+    private static String loadProgram(String fileName) {
+        StringBuilder sb = new StringBuilder();
+        File file = new File(fileName + ".toy");
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(file));){
+            String text = null;
+            while ((text = reader.readLine()) != null) {
+                sb.append(Integer.parseInt(text));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        System.out.println(sb.toString());
+        return sb.toString();
     }
 }
