@@ -4,56 +4,51 @@ import com.brooklyn.edu.cisc3160.toylang.interpreter.Interpreter;
 
 import java.io.*;
 import java.util.Map;
-import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class Main {
     public static void main(String[] args) {
         try {
-            String fileName;
-            String program;
-            if (args.length < 2) {
-                System.out.println("Info: Not enough arguments entered.\nloading default test program...");
-                fileName = "test.toy";
-                ClassLoader classLoader = Main.class.getClassLoader();
-                File file = new File(Objects.requireNonNull(classLoader.getResource(fileName)).getFile());
-                program = loadProgram(file);
-            } else if (args[0].compareTo("--vars") == 0) {
-                fileName = args[1];
-                if (!Pattern.matches(".toy$", fileName)) {
-                    throw new Exception("Error: unsupported file format.");
+            if (args.length >= 2) {
+                String path = args[1];
+
+                if (args[0].compareTo("-vars") == 0 || args[0].compareTo("--variables") == 0) {
+                    String srcCode = extractSourceCode(path);
+                    Interpreter interpreter = new Interpreter();
+                    Map<String, Integer> varsTable = interpreter.getVarsTable(srcCode);
+
+                    System.out.println("printing variables...");
+                    for (String var : varsTable.keySet()) {
+                        System.out.println(String.format("%s = %d", var, varsTable.get(var)));
+                    }
                 } else {
-                    // TODO: Implement functionality to load files
-                    throw new Exception("Info: External files not supported yet.");
+                    throw new Exception(String.format("Command unknown: '%s'.", args[0]));
                 }
             } else {
-                throw new Exception(String.format("Command unknown: '%s'.", args[0]));
+                throw new Exception("Not enough arguments");
             }
-
-            Interpreter interpreter = new Interpreter();
-            Map<String, Integer> varsTable = interpreter.getVarsTable(program);
-
-            for (String var : varsTable.keySet()) {
-                System.out.println(String.format("%s = %d", var, varsTable.get(var)));
-            }
-
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
     }
 
-    private static String loadProgram(File file) {
-        StringBuilder sb = new StringBuilder();
+    /**
+     * Locates the file and return its content as a String.
+     * @param path The path to the file.
+     * @return String representation of the source code.
+     * @throws Exception When a supported file could not be found.
+     */
+    private static String extractSourceCode(String path) throws Exception {
+        if (!Pattern.matches("^\\S+\\.toy$", path)) throw new Exception("File not supported");
+        File file = new File(path);
 
+        StringBuilder sb = new StringBuilder();
         try (BufferedReader reader = new BufferedReader(new FileReader(file));) {
             String text = null;
             while ((text = reader.readLine()) != null) {
                 sb.append(text);
             }
-        } catch (IOException e) {
-            e.printStackTrace();
+            return sb.toString();
         }
-
-        return sb.toString();
     }
 }
