@@ -24,12 +24,13 @@ public class Main {
                     }
                     printVarsTable(srcCode);
                 } else {
-                    throw new Exception(String.format("Command unknown: '%s'.", args[0].replaceFirst("^(-|--)", "")));
+                    throw new Exception(String.format("Command unknown: '%s'.", args[0].replaceFirst("^(-)+", "")));
                 }
             } else {
                 System.out.println("No arguments entered\nRunning default script...\ntest.toy");
-                String path = "src\\main\\resources\\test.toy";
-                String srcCode = getSourceCodeFromFile(path);
+                String srcCode = "x = 1;\n" +
+                        "y = 2;\n" +
+                        "z = ---(x * y) * (x + -y);";
                 System.out.println(srcCode);
                 printVarsTable(srcCode);
             }
@@ -42,9 +43,10 @@ public class Main {
         Interpreter interpreter = new Interpreter();
         Map<String, Integer> varsTable = interpreter.getVarsTable(srcCode);
         // Print variables and their values
+        System.out.println();
         System.out.println("printing variables table...");
         for (String var : varsTable.keySet()) {
-            System.out.println(String.format("%s = %d", var, varsTable.get(var)));
+            System.out.println(String.format("%s : %d", var, varsTable.get(var)));
         }
     }
 
